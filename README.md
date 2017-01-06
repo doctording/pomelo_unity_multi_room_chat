@@ -44,15 +44,14 @@
 * 第二个用户创建房间
 ![](./images/second_create_room.png)
 
-* 第三个用户创建房间
+* 第三个用户登录
 ![](./images/third.png)
 
 * 第3个用户选择前两个中的一个房间(多人在同一房间）
 
 ![](./images/two_user.png)
 
-## 3.2 房间创建和选择和错误处理
-
+## 3.2 房间创建，选择的错误提示处理
 ![](./images/create_error.png)
 
 ![](./images/choose_error.png)
@@ -65,8 +64,7 @@
 ![](./images/two_chat_2.png)
 
 
-## 3.4 某个聊天用户离开，第4个用户登录
-
+## 3.4 某个聊天用户离开(界面实时刷新)，第4个用户登录
 ![](./images/two_leaveRoom.png)
 
 ![](./images/fourth.png)
@@ -80,6 +78,8 @@
 ![](./images/two_two_chat.png)
 
 ## 3.6 上述用户登录，聊天，退出总结
+
+channel,session(request, response, push, notify)
 
 ![](./images/sum.png)
 
