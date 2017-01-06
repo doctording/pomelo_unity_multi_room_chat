@@ -41,10 +41,10 @@
 * 第一个用户创建房间
 ![](./images/create_room.png)
 
-* 第二次用户创建房间
+* 第二个用户创建房间
 ![](./images/second_create_room.png)
 
-* 第三次用户创建房间
+* 第三个用户创建房间
 ![](./images/third.png)
 
 * 第3个用户选择前两个中的一个房间(多人在同一房间）
