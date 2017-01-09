@@ -35,6 +35,8 @@ public class RoomCon : MonoBehaviour
     public static ArrayList userListInARoom = new ArrayList();
     public static string roomid = null; // 用户的roomId
 
+    public Text helloName;
+
     void Start()
     {
         Application.runInBackground = true;
@@ -49,6 +51,8 @@ public class RoomCon : MonoBehaviour
         // 添加按钮的事件监听方法
         btn_choose.onClick.AddListener(chooseRoom);
         btn_create.onClick.AddListener(createRoom);
+
+        helloName.text = "Hello: " + userName;
 
         // 刚进入场景得到的房间列表
         string s = roomsObjHave.ToString();
