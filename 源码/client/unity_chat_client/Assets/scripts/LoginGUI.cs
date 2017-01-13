@@ -7,6 +7,7 @@ using SimpleJson;
 using Pomelo.DotNetClient;
 using System.Threading;
 using UnityEngine.UI;
+using LitJson;
 
 public class LoginGUI : MonoBehaviour
 {
@@ -20,8 +21,14 @@ public class LoginGUI : MonoBehaviour
     private Button btn_login;
     private InputField infield_username;
 
+    public Canvas mycanvas;
+    public GameObject tipPrefab;
+    public bool tipFlag;
+
     void Start()
     {
+        tipFlag = false; 
+
         // 找到各个控件
         infield_username = GameObject.FindGameObjectWithTag("username").GetComponent<InputField>();
         btn_login = GameObject.FindGameObjectWithTag("btn_login").GetComponent<Button>();
@@ -46,6 +53,16 @@ public class LoginGUI : MonoBehaviour
         {
             // 场景切换
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        if (tipFlag)
+        {
+            tipFlag = false;
+            GameObject newTip = Instantiate(tipPrefab);
+            newTip.transform.FindChild("Text").GetComponent<Text>().text = "rename,try again!";
+            newTip.transform.parent = mycanvas.transform;
+            newTip.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+            Destroy(newTip, 2.0f);
         }
     }
 
@@ -125,7 +142,15 @@ public class LoginGUI : MonoBehaviour
         userMessage["uid"] = userName;
         pomeloClient.request("connector.entryHandler.enterFirst", userMessage, (data) =>
         {
-             roomsObj = data;
+            string tmp = data.ToString();
+            JsonData jd = JsonMapper.ToObject(tmp);
+            if (jd.Keys.Contains("code"))
+            {
+                tipFlag = true;
+                return;
+            }
+
+            roomsObj = data;
             _bNeedLoadScene = true;
         });
     }
